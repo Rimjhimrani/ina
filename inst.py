@@ -565,8 +565,6 @@ def main():
         )
         
         # Line location width settings
-        st.subheader("📏 Line Location Box Widths")
-        st.markdown("Adjust the width percentages for line location boxes:")
         
         line_loc_header_width = 0.25
         
@@ -582,10 +580,7 @@ def main():
         
         line_loc_box3_width = 0.15
         
-        line_loc_box4_width = remaining_width3 - line_loc_box3_width
-        
-        st.info(f"Box 4 Width: {line_loc_box4_width:.2%} (auto-calculated)")
-
+        line_loc_box4_width = 0.20
     # Main content area
     if uploaded_file is not None:
         try:
