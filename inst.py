@@ -342,7 +342,15 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
             first_box_content = first_box_logo if first_box_logo else ""
 
             # Create all table rows
-            assly_row = [first_box_content, "ASSLY", Paragraph(ASSLY, ASSLY_style)]
+            if len(ASSLY) > 3:
+                assly_main = ASSLY[:-3]
+                assly_suffix = ASSLY[-3:]
+            else:
+                assly_main = ""
+                assly_suffix = ASSLY
+            formatted_assly = f"{assly_main}<font size='11'><b>{assly_suffix}</b></font>"
+            
+            assly_row = [first_box_content, "ASSLY", Paragraph(formatted_assly, ASSLY_style)]
             partno_row = ["PART NO", Paragraph(f"<b>{part_no}</b>", Part_style), Paragraph(f"<b>{part_status}</b>", Part_status_style)]
             desc_row = ["PART DESC", Paragraph(desc, desc_style)]
             
