@@ -345,9 +345,9 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
             assly_row = [first_box_content, "ASSLY", Paragraph(ASSLY, ASSLY_style)]
             partno_row = ["PART NO", Paragraph(f"<b>{part_no}</b>", Part_style), Paragraph(f"<b>{part_status}</b>", Part_status_style)]
             desc_row = ["PART DESC", Paragraph(desc, desc_style)]
-            ["QTY/VEH", Paragraph(str(Part_per_veh), partper_style), Paragraph(bin_type, bin_type_style), qr_cell],  # Added bin_type in column 3
-            ["TYPE", Paragraph(str(Type), Type_style), ""],
-            ["DATE", Paragraph(today_date, date_style), ""],
+            qty_row = ["QTY/VEH", Paragraph(str(Part_per_veh), partper_style), Paragraph(bin_type, bin_type_style), qr_cell],  # Added bin_type in column 3
+            type_row = ["TYPE", Paragraph(str(Type), Type_style), ""],
+            date_row = ["DATE", Paragraph(today_date, date_style), ""],
             location_row = ["LINE LOCATION", location_box_1, location_box_2, location_box_3, location_box_4]
 
             # Column widths - MAINTAINING ORIGINAL STRUCTURE
@@ -390,8 +390,8 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
             assly_table = Table([assly_row], colWidths=col_widths_assly, rowHeights=[ASSLY_row_height])
             partno_table = Table([partno_row], colWidths=col_widths_partno, rowHeights=[part_row_height])
             desc_table = Table([desc_row], colWidths=col_widths_standard, rowHeights=[desc_row_height])
-            qty_table = Table([unified_table_data[3]], colWidths=col_widths_qty, rowHeights=[row_heights[3]])  # 4-column QTY table with bin_type
-            middle_table = Table(unified_table_data[4:6], colWidths=col_widths_middle, rowHeights=row_heights[4:6])  # 3-column TYPE and DATE
+            qty_table = Table([qty_row[3]], colWidths=col_widths_qty, rowHeights=[row_heights[3]])  # 4-column QTY table with bin_type
+            middle_table = Table(middle_row[4:6], colWidths=col_widths_middle, rowHeights=row_heights[4:6])  # 3-column TYPE and DATE
             bottom_table = Table([location_row], colWidths=col_widths_bottom, rowHeights=[location_row_height])
 
             # Apply table styles
@@ -501,8 +501,8 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
             assly_table.setStyle(assly_table_style)
             partno_table.setStyle(partno_table_style)
             desc_table.setStyle(desc_table_style)
-            qty_table.setStyle(TableStyle(qty_table_style))
-            middle_table.setStyle(TableStyle(middle_table_style))
+            qty_table.setStyle(qty_table_style))
+            middle_table.setStyle(middle_table_style)
             bottom_table.setStyle(bottom_table_style)
 
             # Add tables to elements
