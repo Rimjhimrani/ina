@@ -368,19 +368,21 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
                 content_width * 0.50,    # Part number: 50%
                 content_width * 0.25     # Part status: 25%
             ]
-
+            
             col_widths_standard = [content_width * 0.25, content_width * 0.75]
 
             # Column widths for combined QTY/TYPE/DATE table (4 columns max)
             # Row 1: QTY/VEH has 4 columns
             # Row 2-3: TYPE/DATE have 3 columns (with QR spanning from row 1)
-            col_widths_combined = [
+            col_widths_qty = [
                 content_width * 0.25,    # Header: 25%
                 content_width * 0.175,   # Value 1: 17.5%
                 content_width * 0.175,   # Value 2/Bin type: 17.5%
                 content_width * 0.40     # QR code: 40%
             ]
 
+            col_widths_middle = [content_width * 0.25, content_width * 0.35, content_width * 0.40]
+            
             col_widths_bottom = [
                 content_width * line_loc_header_width,
                 content_width * line_loc_box1_width,
@@ -452,28 +454,41 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
             ]
 
             # FIXED: Style for combined QTY/TYPE/DATE table with proper QR spanning
-            qty_type_date_table_style = [
+        
+           qty_table_style = [
                 ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
-                ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),  # All headers bold
-                ('FONTSIZE', (0, 0), (0, -1), 8),                # Header font sizes
-                ('FONTSIZE', (1, 0), (1, 0), 9),                 # QTY value font size
-                ('FONTSIZE', (2, 0), (2, 0), 8),                 # Bin type font size
-                ('FONTSIZE', (1, 1), (1, 1), 9),                 # TYPE value font size
-                ('FONTSIZE', (1, 2), (1, 2), 9),                 # DATE value font size
-                ('ALIGN', (0, 0), (0, -1), 'CENTER'),            # Headers centered
-                ('ALIGN', (1, 0), (1, 0), 'LEFT'),               # QTY value left
-                ('ALIGN', (2, 0), (2, 0), 'CENTER'),             # Bin type centered
-                ('ALIGN', (3, 0), (3, 0), 'CENTER'),             # QR code centered
-                ('ALIGN', (1, 1), (1, 1), 'LEFT'),               # TYPE value left
-                ('ALIGN', (1, 2), (1, 2), 'LEFT'),               # DATE value left
+                ('FONTNAME', (0, 0), (0, 0), 'Helvetica-Bold'),  # Header bold
+                ('FONTSIZE', (0, 0), (0, 0), 8),                # Header font size
+                ('FONTSIZE', (1, 0), (1, 0), 9),                # QTY value font size
+                ('FONTSIZE', (2, 0), (2, 0), 8),                # Bin type font size
+                ('ALIGN', (0, 0), (0, 0), 'CENTER'),            # Header centered
+                ('ALIGN', (1, 0), (1, 0), 'LEFT'),              # QTY value left
+                ('ALIGN', (2, 0), (2, 0), 'CENTER'),            # Bin type centered
+                ('ALIGN', (3, 0), (3, 0), 'CENTER'),            # QR code centered
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),    # All borders
+                ('LEFTPADDING', (0, 0), (-1, -1), 3),
+                ('RIGHTPADDING', (0, 0), (-1, -1), 3),
+                ('TOPPADDING', (0, 0), (-1, -1), 2),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+            ]
+        
+            middle_table_style = [
+                ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+                ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (0, 0), 8),
+                ('FONTSIZE', (0, 1), (0, 2), 8),
+                ('FONTSIZE', (1, 0), (-1, -1), 10),
+                ('ALIGN', (0, 0), (0, -1), 'CENTER'),
+                ('ALIGN', (1, 0), (1, -1), 'LEFT'),
+                ('ALIGN', (2, 0), (2, -1), 'CENTER'),
                 ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
                 ('GRID', (0, 0), (-1, -1), 1, colors.black),
                 ('LEFTPADDING', (0, 0), (-1, -1), 3),
                 ('RIGHTPADDING', (0, 0), (-1, -1), 3),
                 ('TOPPADDING', (0, 0), (-1, -1), 2),
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
-                # FIXED: QR code spans from QTY/VEH row through TYPE and DATE rows
-                ('SPAN', (3, 0), (3, 2)),  # QR spans from row 0 to row 2 in column 3
+                ('SPAN', (2, 0), (2, 1)),  # QR code spans both TYPE and DATE rows
             ]
 
             bottom_table_style = [
