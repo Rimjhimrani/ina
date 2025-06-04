@@ -534,8 +534,16 @@ def main():
     """Main Streamlit application"""
     st.set_page_config(page_title="Sticker Label Generator", layout="wide")
     
-    st.title("🏷️ Sticker Label Generator")
-    st.markdown("Upload your Excel/CSV file to generate professional sticker labels with QR codes")
+    st.title("🏷️ Instor Label Generator")
+    
+    # Add the developer credit in italic format below the title
+    st.markdown(
+        "<p style='font-size:18px; font-style:italic; margin-top:-10px; text-align:left;'>"
+        "Designed and Developed by Agilomatrix</p>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown("---")
 
     # Sidebar for configuration
     with st.sidebar:
