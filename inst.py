@@ -455,7 +455,7 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
 
             # FIXED: Style for combined QTY/TYPE/DATE table with proper QR spanning
         
-           qty_table_style = [
+            qty_table_style = [
                 ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
                 ('FONTNAME', (0, 0), (0, 0), 'Helvetica-Bold'),  # Header bold
                 ('FONTSIZE', (0, 0), (0, 0), 8),                # Header font size
