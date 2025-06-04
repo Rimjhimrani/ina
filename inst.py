@@ -257,8 +257,8 @@ def generate_sticker_labels(df, line_loc_header_width, line_loc_box1_width,
         partper_style = ParagraphStyle(name='Quantity', fontName='Helvetica', fontSize=9, alignment=TA_LEFT, leading=12)
         # Style for bin type
         bin_type_style = ParagraphStyle(name='BinType', fontName='Helvetica', fontSize=8, alignment=TA_CENTER, leading=10)
-        Type_style = ParagraphStyle(name='Quantity', fontName='Helvetica', fontSize=9, alignment=TA_LEFT, leading=12)
-        date_style = ParagraphStyle(name='DATE', fontName='Helvetica', fontSize=9, alignment=TA_LEFT, leading=12)
+        Type_style = ParagraphStyle(name='Quantity', fontName='Helvetica', fontSize=7, alignment=TA_LEFT, leading=12)
+        date_style = ParagraphStyle(name='DATE', fontName='Helvetica', fontSize=7, alignment=TA_LEFT, leading=12)
         location_style = ParagraphStyle(name='Location', fontName='Helvetica', fontSize=8, alignment=TA_CENTER, leading=10)
 
         content_width = CONTENT_BOX_WIDTH
