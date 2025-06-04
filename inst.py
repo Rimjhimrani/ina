@@ -568,36 +568,19 @@ def main():
         st.subheader("📏 Line Location Box Widths")
         st.markdown("Adjust the width percentages for line location boxes:")
         
-        line_loc_header_width = st.slider(
-            "Header Width (%)", 
-            min_value=0.1, max_value=0.5, 
-            value=0.25, step=0.05,
-            help="Width of the 'LINE LOCATION' header box"
-        )
+        line_loc_header_width = 0.25
         
         remaining_width = 1.0 - line_loc_header_width
         
-        line_loc_box1_width = st.slider(
-            "Box 1 Width (%)", 
-            min_value=0.1, max_value=remaining_width, 
-            value=min(0.2, remaining_width/4), step=0.05
-        )
+        line_loc_box1_width = 0.15
         
         remaining_width2 = remaining_width - line_loc_box1_width
         
-        line_loc_box2_width = st.slider(
-            "Box 2 Width (%)", 
-            min_value=0.1, max_value=remaining_width2, 
-            value=min(0.2, remaining_width2/3), step=0.05
-        )
+        line_loc_box2_width = 0.25
         
         remaining_width3 = remaining_width2 - line_loc_box2_width
         
-        line_loc_box3_width = st.slider(
-            "Box 3 Width (%)", 
-            min_value=0.1, max_value=remaining_width3, 
-            value=min(0.15, remaining_width3/2), step=0.05
-        )
+        line_loc_box3_width = 0.15
         
         line_loc_box4_width = remaining_width3 - line_loc_box3_width
         
